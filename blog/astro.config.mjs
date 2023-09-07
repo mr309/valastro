@@ -5,6 +5,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://mr309.github.io/valastro',
+	site: 'https://mr309.github.io',
+	base: '/valastro',
 	integrations: [mdx(), sitemap()],
 });
