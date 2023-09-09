@@ -1,10 +1,10 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@astrojs/mdx': ^1.0.2
+  '@astrojs/mdx': ^1.0.3
   '@astrojs/rss': ^3.0.0
   '@astrojs/sitemap': ^3.0.0
-  astro: ^3.0.10
+  astro: ^3.0.12
 
 dependencies:
   '@astrojs/mdx': 1.0.3_astro@3.0.12
