@@ -5,6 +5,7 @@
  */
 
 :root {
+	--space: 2rem;
 	--accent: #2337ff;
 	--accent-dark: #000d8a;
 	--black: 15, 18, 25;
@@ -47,7 +48,19 @@ main {
 	max-width: calc(100% - 2em);
 	margin: auto;
 	padding: 3em 1em;
+	display: flex;
+	flex-wrap: wrap;
 }
+
+aside {
+	--offset: var(--space);
+  	flex-grow: 1;
+  	flex-basis: 300px;
+  	align-self: start;
+  	position: sticky;
+  	top: var(--offset);
+}
+
 h1,
 h2,
 h3,
