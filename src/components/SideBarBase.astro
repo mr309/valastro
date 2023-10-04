@@ -1,0 +1,94 @@
+---
+import { getCollection } from "astro:content";
+import "../styles/global.css";
+import FormattedDate from "../components/FormattedDate.astro";
+
+const posts = (await getCollection("blog")).sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf());
+---
+
+<div class="fourstack b">
+  <section>
+    <ul>
+      {
+        posts.slice(0, 3).map((post) => (
+          <li>
+            <div class="box">
+              <a href={`/valastro/blog/${post.slug}/`}>
+                <span class="title">{post.data.title}</span>
+                <img width={720} height={360} src={post.data.heroImage} alt="" />
+                <p class="date">
+                  <span>
+                    <FormattedDate date={post.data.pubDate} />
+                  </span>
+                </p>
+              </a>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+  <!--<h2>Sidebar</h2>
+  <h2>Sidebar</h2>
+  <h2>Sidebar</h2>
+  <h2>Sidebar</h2>-->
+</div>
+
+<style>
+  .box {
+    display: flex;
+    flex: 1;
+    border-width: 1rem;
+    border-style: solid;
+    border-color: var(--usonian);
+    max-width: 263px;
+    border-radius: 5px;
+  }
+  .date {
+    margin-top: -3.6rem;
+    text-align: right;
+    padding-right: 1.25rem;
+    text-align: right;
+    color: white;
+  }
+  .fourstack {
+    gap: 1rem;
+    padding-top: 0rem;
+    grid-template-areas:
+      "b"
+      "b"
+      "b"
+      "b";
+  }
+
+  .title {
+    margin-top: 2rem;
+  }
+
+  a {
+    text-decoration: none;
+  }
+  h2 {
+    border-width: 1rem;
+    padding: 1rem 1rem 1rem 1rem;
+    margin-right: 1rem;
+    border-style: solid;
+    border-color: var(--usonian);
+  }
+
+  h5 {
+    margin: 0;
+    padding: 0;
+  }
+  ul {
+    margin-left: -3rem;
+  }
+  li {
+    margin-right: 1rem;
+    list-style-type: none;
+    margin-left: -1.5rem;
+  }
+  img {
+    border-radius: 0px;
+  }
+</style>

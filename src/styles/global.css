@@ -10,11 +10,13 @@
 	--accent-dark: #000d8a;
 	--black: 15, 18, 25;
 	--gray: 96, 115, 159;
-	--gray-light: 229, 233, 240;
+	--brick-light: rgb(228, 169, 140);
 	--gray-dark: 34, 41, 57;
-	--gray-gradient: rgba(var(--gray-light), 50%), #fff;
+	--gray-gradient: var(--brick-light), rgb(255, 202, 156);
 	--box-shadow: 0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%),
 		0 16px 32px rgba(var(--gray), 33%);
+	--usonian: rgb(148, 14, 14);
+	--roof-gray: rgb(98, 84, 76);
 }
 @font-face {
 	font-family: 'Atkinson';
@@ -35,31 +37,73 @@ body {
 	margin: 0;
 	padding: 0;
 	text-align: left;
-	background: linear-gradient(var(--gray-gradient)) no-repeat;
-	background-size: 100% 600px;
+	background: rgba(228,137,93,.6);
+	background: linear-gradient(180deg, rgb(234, 161, 124) 0%, rgba(243,183,154,1) 33%, rgba(255,202,156,1) 100%) no-repeat;
+	background-size: 100%;
 	word-wrap: break-word;
 	overflow-wrap: break-word;
 	color: rgb(var(--gray-dark));
 	font-size: 20px;
-	line-height: 1.7;
+	line-height: 1.7;	
 }
 main {
-	width: 720px;
-	max-width: calc(100% - 2em);
 	margin: auto;
-	padding: 3em 1em;
-	display: flex;
-	flex-wrap: wrap;
+	padding: 0em 1em;
+	display: grid;
+	grid-template-areas: "a b";
+	justify-content: space-between;
+	border-top-width: 1em;
+	border-top-style: solid;
+	border-top-color: var(--usonian);
+}
+article {
+	grid-area: a;
+	width: 75%;
+	padding-left: 6em;
+	overflow-wrap: break-word; 
+	align-items: start;
 }
 
 aside {
+	grid-area: b;
+}
+
+.b{
+	max-width: 25vw;
+	min-width: 20vw;
 	--offset: var(--space);
-  	flex-grow: 1;
-  	flex-basis: 300px;
-  	align-self: start;
+  	padding-right: 1em;
+  	align-items: start;
+  	justify-content: space-between;
   	position: sticky;
   	top: var(--offset);
+  	display: grid;
 }
+
+.a {
+	grid-area: a;
+}
+
+.pillar-verticals {
+    display: grid;
+    grid-template-areas: "A B C D E";
+    grid-template-columns: 2em 2em 2em 2em 2em;
+    height: 100%;
+	grid-area: b;
+  }
+
+  .two {
+    background-color: var(--usonian);
+    justify-self: center;
+    width: 1rem;
+    grid-area: B;
+  }
+  .four {
+    background-color: var(--usonian);
+    justify-self: center;
+    width: 1rem;
+    grid-area: E;
+  }
 
 h1,
 h2,
@@ -165,3 +209,4 @@ hr {
 	/* added line to stop words getting smushed together (as they go onto seperate lines and some screen readers do not understand line feeds as a space */
 	white-space: nowrap;
 }
+
